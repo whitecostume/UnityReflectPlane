@@ -31,17 +31,17 @@ public class ReflectEffect : MonoBehaviour
 
     void InitReflectCamera()
     {
-        reflectTexture = new RenderTexture(Screen.width, Screen.height, 24);
+        reflectTexture = new RenderTexture(512, 512, 24);
         
         reflectCamera = new GameObject("ReflectCamera").AddComponent<Camera>();
         reflectCamera.transform.position = mainCamera.transform.position;
         reflectCamera.transform.rotation = mainCamera.transform.rotation;
         reflectCamera.transform.localScale = mainCamera.transform.localScale;
         // reflectCamera.hideFlags = HideFlags.HideInHierarchy;
-        // reflectCamera.depth = mainCamera.depth - 1;
+        reflectCamera.depth = mainCamera.depth - 1;
         reflectCamera.targetTexture = reflectTexture;
         reflectCamera.cullingMask = LayerMask.GetMask("Default");
-
+        
         planeMeshRenderer.material.SetTexture("_ReflectTex", reflectTexture);
     }
 
@@ -76,6 +76,7 @@ public class ReflectEffect : MonoBehaviour
 
         reflectCamera.transform.rotation = Quaternion.LookRotation(refectForward, refectUp);
         reflectCamera.fieldOfView = mainCamera.fieldOfView;
+        reflectCamera.aspect = ((float)Screen.width) / Screen.height;
             
 
     }
