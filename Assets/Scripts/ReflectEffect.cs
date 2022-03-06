@@ -7,8 +7,13 @@ public class ReflectEffect : MonoBehaviour
     public Camera mainCamera;
     public MeshRenderer planeMeshRenderer;
     private Camera reflectCamera;
-    [SerializeField]
+    
     private RenderTexture reflectTexture;
+    
+
+    [Header("Reflect Settings")]
+    public LayerMask refectLayerMask;
+    public int ReflectRTWidth = 512;
 
     // Start is called before the first frame update
     void Start()
@@ -31,16 +36,16 @@ public class ReflectEffect : MonoBehaviour
 
     void InitReflectCamera()
     {
-        reflectTexture = new RenderTexture(512, 512, 24);
+        reflectTexture = new RenderTexture(ReflectRTWidth, ReflectRTWidth, 24);
         
         reflectCamera = new GameObject("ReflectCamera").AddComponent<Camera>();
         reflectCamera.transform.position = mainCamera.transform.position;
         reflectCamera.transform.rotation = mainCamera.transform.rotation;
         reflectCamera.transform.localScale = mainCamera.transform.localScale;
-        // reflectCamera.hideFlags = HideFlags.HideInHierarchy;
+
         reflectCamera.depth = mainCamera.depth - 1;
         reflectCamera.targetTexture = reflectTexture;
-        reflectCamera.cullingMask = LayerMask.GetMask("Default");
+        reflectCamera.cullingMask = refectLayerMask;
         
         planeMeshRenderer.material.SetTexture("_ReflectTex", reflectTexture);
     }

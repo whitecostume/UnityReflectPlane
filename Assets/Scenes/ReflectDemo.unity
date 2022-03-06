@@ -30216,6 +30216,9 @@ MonoBehaviour:
   mainCamera: {fileID: 43535626}
   planeMeshRenderer: {fileID: 2046736635}
   reflectTexture: {fileID: 0}
+  refectLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1001 &2050900112
 PrefabInstance:
   m_ObjectHideFlags: 0
