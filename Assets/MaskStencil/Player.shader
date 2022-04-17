@@ -9,7 +9,12 @@
     {
         Tags { "RenderType"="Opaque" }
         LOD 100
-      
+        Stencil
+        {
+            Comp Always
+            Pass Zero
+        }
+
 
         Pass
         {

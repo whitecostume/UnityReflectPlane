@@ -19,6 +19,8 @@
                 Pass Replace
             }
 
+            // ZWrite On
+
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
