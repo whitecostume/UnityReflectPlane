@@ -9,3 +9,8 @@ obj/
 Debug/
 Logs/
 Temp/
+.vs/urpreflectdemo/v17/Browse.VC.db
+.vs/urpreflectdemo/v17/Browse.VC.db-shm
+.vs/urpreflectdemo/v17/Browse.VC.db-wal
+.vs/urpreflectdemo/v17/Browse.VC.opendb
+.vsconfig
