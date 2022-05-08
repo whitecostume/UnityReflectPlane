@@ -52,6 +52,10 @@ public class ClipPlane : MonoBehaviour
         MaterialPropertyBlock block = new MaterialPropertyBlock();
         foreach (var r in renderers)
         {
+            if (r == null)
+            {
+                continue;
+            }
             r.GetPropertyBlock(block);
             block.SetVector(_Shader_ClipPlane_Nor,nor);
             block.SetVector(_Shader_ClipPlane_Pos,pos);
@@ -64,4 +68,19 @@ public class ClipPlane : MonoBehaviour
     {
         UpdateClipShaderParams();
     }
+
+    void OnDrawGizmos()
+    {
+        Vector3 size = new Vector3(10, 0.05f, 10f);
+        Gizmos.DrawWireCube(transform.position, size);
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Vector3 size = new Vector3(10, 0.05f, 10f);
+
+        Gizmos.DrawWireCube(transform.position, size);
+    }
+
 }
